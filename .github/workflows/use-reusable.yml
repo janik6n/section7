@@ -70,6 +70,9 @@ jobs:
   deploy:
     needs: build
     uses: ./.github/workflows/reusable.yml
+    with:
+      # This is defined as input in the reusable workflow
+      artifact-name: dist-files
   report:
     # Run this job only if 'lint' or 'deploy' jobs failed
     needs: [lint, deploy]
