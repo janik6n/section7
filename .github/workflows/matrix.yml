@@ -1,9 +1,11 @@
-name: Matrix Dmeo
+name: Matrix Demo
 
 on: push
 
 jobs:
   build:
+    # Unless this is set, if one job fails, the rest will be cancelled.
+    continue-on-error: true
     strategy:
       matrix:
         # These keys can be anything
