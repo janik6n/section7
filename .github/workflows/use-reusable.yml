@@ -73,6 +73,15 @@ jobs:
     with:
       # This is defined as input in the reusable workflow
       artifact-name: dist-files
+    # secrets:
+      # some-secret: ${{ secrets.some-secret }}
+  print-deploy-result:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      # key 'result' comes from the reusable workflow outputs
+      - name: Print deploy output
+        run: echo "${{ needs.deploy.outputs.result }}"
   report:
     # Run this job only if 'lint' or 'deploy' jobs failed
     needs: [lint, deploy]
